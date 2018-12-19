@@ -1,0 +1,162 @@
+{
+  "services": [{
+    "name": "kafka-service",
+    "id": "kafka-service-unique-id",
+    "description": "A kafka service.",
+    "tags": ["kafka", "topic"],
+    "requires": ["route_forwarding", "volume_mount"],
+    "bindable": true,
+    "instances_retrievable": true,
+    "bindings_retrievable": true,
+    "metadata": {
+      "provider": {
+        "name": "OCI kafka"
+      },
+      "listing": {
+        "imageUrl": "http://example.com/kafka.gif",
+        "longDescription": "Provision and use."
+      },
+      "displayName": "The kafka Service Broker"
+    },
+    "plan_updateable": true,
+    "plans": [{
+      "name": "kafka-plan-1",
+      "id": "kafka-plan-1",
+      "description": "A 3 broker kafka service with topic limit 5",
+      "free": false,
+      "metadata": {
+        "max_storage_tb": 5,
+        "costs":[
+          {
+            "amount":{
+              "usd":99.0
+            },
+            "unit":"MONTHLY"
+          },
+          {
+            "amount":{
+              "usd":0.99
+            },
+            "unit":"1GB of messages over 20GB"
+          }
+        ],
+        "bullets": [
+          "Dedicated kafka brokers",
+          "5 GB storage",
+          "40 concurrent connections"
+        ]
+      },
+      "schemas": {
+        "service_instance": {
+          "create": {
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "service-name": {
+                  "description": "Name for the kafka service",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "update": {
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "service-name": {
+                  "description": "Name for the kafka service",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "service_binding": {
+          "create": {
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "service-name": {
+                  "description": "Name for the kafka service",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }, {
+      "name": "kafka-plan-2",
+      "id": "kafka-plan-2",
+      "description": "A 1 broker kafka service with topic limit 3",
+      "free": false,
+      "metadata": {
+        "max_storage_tb": 2,
+        "costs":[
+          {
+            "amount":{
+              "usd":99.0
+            },
+            "unit":"MONTHLY"
+          },
+          {
+            "amount":{
+              "usd":0.99
+            },
+            "unit":"1GB of messages over 20GB"
+          }
+        ],
+        "bullets": [
+          "Dedicated kafka brokers",
+          "3 GB storage",
+          "20 concurrent connections"
+        ]
+      },
+      "schemas": {
+        "service_instance": {
+          "create": {
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "service-name": {
+                  "description": "Name for the kafka service",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "update": {
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "service-name": {
+                  "description": "Name for the kafka service",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "service_binding": {
+          "create": {
+            "parameters": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "service-name": {
+                  "description": "Name for the kafka service",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+      }]
+  }]
+}

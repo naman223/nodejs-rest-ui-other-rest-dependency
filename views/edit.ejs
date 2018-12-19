@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Create Kafka Service</title>
+    <link rel="shortcut icon" href="images/icon.png" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="css/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="css/dataTables/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/startmin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<script>
+    function confirmSubmit(msg,url) {
+        var agree = confirm(msg);
+        if (agree) {
+            document.myform.method = "POST";
+            document.myform.action = url;
+            document.myform.submit();
+        }
+    }
+</script>
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><b>Kafka Service Orchestration</b></a>
+        </div>
+
+        <ul class="nav navbar-right navbar-top-links">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> Welcome <%=username%><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="/index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/create"><i class="fa fa-edit fa-fw"></i> Create Service</a>
+                    </li>
+                    <li>
+                        <a href="/certificate"><i class="fa fa-table fa-fw"></i> Get Certificate</a>
+                    </li>
+                    <li>
+                        <a href="samples/sample.zip" download><i class="fa fa-files-o fa-fw"></i> Download Sample</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><img src="images/kafka.svg" height="50">&nbsp;Creat Kafka Service</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        Enter Details as Below
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form role="form" name="myform" onsubmit="confirmSubmit('Do you want to Continue with Edit this Service?','/api/services/ui/edit')">
+                                    <div class="form-group">
+                                        <input type="hidden" name="name" value="<%=serviceName%>"/>
+                                        <label>Service Name</label><br>
+                                        <b><%=serviceName%></B>
+                                        <p class="help-block">Editing this Service will delete your data and re-create the new Setup for you.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Select the Plan</label>
+                                        <select class="form-control" name="shape">
+                                            <% for (var index = 0; index < catalogServices.length; index++) {
+                                            for (var planIndex = 0; planIndex < catalogServices[index].plans.length; planIndex++) { %>
+                                            <option value="<%=catalogServices[index].plans[planIndex].id%>"><%=catalogServices[index].plans[planIndex].description%></option>
+                                            <% }
+                                            }%>
+                                        </select>
+                                        <p class="help-block">Select the Plan for your Service. Visit our wiki for <a target="_blank" href="">More Details</a>.
+                                            Based on your selection it decides the Topology for your Kafka Cluster.</p>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">Edit Service</button>
+                                    <% if (formsMessage) { %>
+                                        <br><br><div class="alert alert-success"><b><%=formsMessage%></b></div>
+                                    <% } %>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="js/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/startmin.js"></script>
+
+</body>
+</html>
+
+<!-- /#wrapper -->

@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+kafka-manager-ui.iml
+node_modules/
+package-lock.json

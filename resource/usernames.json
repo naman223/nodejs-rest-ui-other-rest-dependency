@@ -1,0 +1,22 @@
+{
+  "usernames": [{
+    "username": "demouser1",
+    "password": "Welcome1!"
+  },
+  {
+    "username": "demouser2",
+    "password": "Welcome2@"
+  },
+  {
+    "username": "guest",
+    "password": "Welcome1"
+  },
+  {
+    "username": "test1",
+    "password": "Welcome1"
+  },
+  {
+    "username": "test2",
+    "password": "Welcome1"
+  }]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "kafka_up",
+  "version": "1.0.0",
+  "description": "Kafka UI for POC",
+  "author": "Naman Mehta <naman.mehta@oracle.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "request": "^2.88.0"
+  }
+}

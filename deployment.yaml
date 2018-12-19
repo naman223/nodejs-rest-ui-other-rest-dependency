@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-manager-ui-svc
+  labels:
+    app: kafka-manager-ui-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 8090
+    nodePort: 0
+  selector:
+    app: kafka-manager-ui
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-manager-ui
+  labels:
+    app: kafka-manager-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-manager-ui
+  template:
+    metadata:
+      labels:
+        app: kafka-manager-ui
+    spec:
+      containers:
+      - name: kafka-manager-ui
+        image: iad.ocir.io/odx-platform/kafka-manager-ui/kafka-manager-ui:1.1
+        env:
+          - name: API_SERVICE_ENDPOINT
+            value: 129.213.88.145:30578
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8090
+          name: http

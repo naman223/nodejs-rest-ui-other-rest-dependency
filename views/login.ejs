@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Kafka Service Dashboard - Login</title>
+        <link rel="shortcut icon" href="images/icon.png" />
+
+        <!-- Bootstrap Core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="../css/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="../css/startmin.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    </head>
+    <script>
+        function validateForm() {
+            var TUsername = document.myform.username.value;
+            var TPassword = document.myform.password.value;
+            if (TUsername.trim() =="" || /[^A-Za-z0-9\-_\/]/.test(TUsername)) {
+                alert('Provide Username. Username should be alphanumeric only.');
+                return false;
+            } else if (TPassword.trim() =="") {
+                alert('Provide Password.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <body>
+      <form role="form" name="myform" method="post" action="/api/services/ui/login" onsubmit="return validateForm()" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login-panel panel panel-primary">
+                        <div class="panel-heading">
+                            <h3><img src="images/icon.png" height="60"/>&nbsp;&nbsp;Kafka Service</h3>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                            </div>
+                            <!-- /.table-responsive -->
+                            <div class="well">
+                                <h4><p align="justify">We believe providing Kafka Service will be uniquely beneficial to enterprises looking to take advantage of this powerful data streaming technology.
+                                    A lightweight, easy-to-use streaming platform based on Apache Kafka that you don’t have to setup and operate yourself. <Br><Br>A path for your operations
+                                    team (or you, the consummate devops professional) to run it at scale, without adding to the security, compliance, or operational needs of your
+                                    organization. This is addressed emphatically by Us.</p></h4>
+                                <p>Visit our wiki for <a target="_blank" href="https://confluence.oraclecorp.com/confluence/display/ODX/Kafka">More Details</a>.</p>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <div class="col-lg-6">
+                    <div class="login-panel panel panel-primary">
+                        <div class="panel-heading">
+                            <h3><img src="images/login.png" height="60"/>&nbsp;&nbsp;Please Sign In</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Username" name="username" type="text" autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    </div>
+
+                                    <!-- Change this to a button or input when using this as a form -->
+                                    <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                                </fieldset>
+                                <% if (formsMessage) {
+                                    if(formsMessage.indexOf("Not Valid.") > -1 || formsMessage.indexOf("invalidate.") > -1) { %>
+                                        <br><br><div class="alert alert-danger"><b><%=formsMessage%></b></div>
+                                <% }
+                                }%>
+                            </form>
+                        </div>
+                        <div class="panel-body">
+                            <div class="well">
+                                <h4>Request Credentials</h4>
+                                <p>Please email <a href="mailto:naman.mehta@oracle.com">us</a> to get the Credentials to login.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="../js/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../js/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../js/startmin.js"></script>
+      </form>
+    </body>
+</html>
